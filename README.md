@@ -25,8 +25,11 @@ Se necesita tener instalado:
 
 ## Archivos:
 
-* `[Proyecto]/src/app/app.componet.html`: Html Principal.
-* `[Proyecto]/src/app/app.componet.ts`: Archivo que define Componente (HTML y CSS)
+* `[Proyecto]/src/app/app.component.html`: Html Principal.
+    * Llamar a un componente:  
+    `<app-product></app-product>`
+
+* `[Proyecto]/src/app/app.component.ts`: Archivo que define Componente (HTML y CSS)
     * Definir Funciones:
         ```
         addItem(){
@@ -43,6 +46,18 @@ Se necesita tener instalado:
     ]
     })
     ```
+Nuevo componente.
+```
+import { ProductComponent } from './components/product.component';
+
+declarations: [
+    AppComponent,
+    ProductComponent
+  ]
+
+```
+
+
 * `[Proyecto]/src/app/[Modelo].model.ts`: Archivo donde se define una **INTERFACE**.
     ```
     export interface Product {
@@ -53,6 +68,7 @@ Se necesita tener instalado:
         description:string;
     }
     ```
+* `[Proyecto]/src/app/Components/product.component.ts`: Crear un componente.
 
 ## Lenguaje Angular:
 
@@ -93,4 +109,63 @@ Se necesita tener instalado:
     ];
     ```
 
+* **Componentes**
+
+Un componente es la parte más pequeña de una aplicación web.
+
+```
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-product',
+    templateUrl: './product.component.html'
+})
+
+export class ProductComponent{
+
+}
+```
+
+## Inputs y Outputs: 
+Enviar y recibir datos desde un componente
+
+* Input:
+Se define dentro de un componente se importa:  
+`import { Input } from '@angular/core';`
+y se utiliza en varibles al cual se vamos asignar un valor:  
+`@Input() product: Product;`
+
+*HTML Principal:  
+`<app-product [product]="product"></app-product>`
+
+* Output: 
+Se define dentro de un componente se importa:  
+`import { Output, EventEmitter} from '@angular/core';`
+Declaramos el evento:
+`@Output() ProductClicked: EventEmitter<any> = new EventEmitter();`
+Leerlo desde el componente padre (Html principal):
+`<app-product (ProductClicked)="clickProduct($event)"></app-product>`
+
+## Ciclo de vida de los componentes
+
+Archivo: product.component.ts (Se define una clase)
+
+1. Constructor: Se ejecuta primero, cada vez que se crea una instancia de la clase
+```
+    constructor(){
+        console.log("1. Constructor");
+        
+    }
+```
+2. ngOnChanges: Detecta los cambios del componente.
+
+```
+import { OnChanges, SimpleChange  } from '@angular/core';
+
+export class ProductComponent implements OnChanges{
+    ngOnchanges(changes:){
+
+    }
+};
+```
 

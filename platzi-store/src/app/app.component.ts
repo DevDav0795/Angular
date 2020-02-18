@@ -57,8 +57,14 @@ export class AppComponent {
 
   addItem(){
     this.nombres.push('Nuevo item');
-  }
+  };
   deleteItem(item: number){
     this.nombres.splice(item,1);
+  };
+
+  clickProduct(id: number){
+    console.log('Producto');
+    console.log(id);
+    
   }
 }
