@@ -21,7 +21,11 @@ Se necesita tener instalado:
     * Proprocesador: SCSS (Sass)
 * `ng serve`: Iniciar servidor Angular De **DESARROLLO**
     * `http://localhost:4200/`
-* `ng build --prod`: Iniciar servidor Angular en **PROCUCCIÓN**
+* `ng build --prod`: Iniciar servidor Angular en 
+**PROCUCCIÓN**
+* `ng generate component cart`: Crea un componente con los 4 archivo más comunes. Html, scss,ts y spect.ts
+* `ng lint`: Revisa si hay sugerencia de buenas prácticas.
+
 
 ## Archivos:
 
@@ -150,14 +154,20 @@ Leerlo desde el componente padre (Html principal):
 
 Archivo: product.component.ts (Se define una clase)
 
-1. Constructor: Se ejecuta primero, cada vez que se crea una instancia de la clase
+1. **Constructor:** Se ejecuta primero, cada vez que se crea una instancia de la clase
 ```
     constructor(){
         console.log("1. Constructor");
         
     }
 ```
-2. ngOnChanges: Detecta los cambios del componente.
+2. **ngOnChanges:** Detecta los cambios del componente.
+
+3. **ngOnInit():** Se Ejeucuta una vez cuando el Componente se muestra en pantalla.
+
+4. **ngDoCheck():** Similar a método (ngOnChanges) donde ngOnChanges es Nativo y ngDoCheck es revisar cambios "a tu manera."
+
+5. **ngOnDestroy():** Se ejecuta cuando un componente se deja de mostrar en la pantalla.
 
 ```
 import { OnChanges, SimpleChange  } from '@angular/core';

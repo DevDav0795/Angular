@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Product } from './product.model';
 
 @Component({
@@ -8,9 +9,12 @@ import { Product } from './product.model';
 })
 export class AppComponent {
   title = 'platzi-store';
-  nombres = ['David', 'Polette', 'Jenny'];
 
-  products: Product []= [
+  items = ['nicolas', 'julian', 'perez'];
+
+  objeto = {};
+
+  products: Product[] = [
     {
       id: '1',
       image: 'assets/images/camiseta.png',
@@ -55,16 +59,16 @@ export class AppComponent {
     },
   ];
 
-  addItem(){
-    this.nombres.push('Nuevo item');
-  };
-  deleteItem(item: number){
-    this.nombres.splice(item,1);
-  };
+  addItem() {
+    this.items.push('nuevo item');
+  }
 
-  clickProduct(id: number){
-    console.log('Producto');
+  deleteItem(index: number) {
+    this.items.splice(index, 1);
+  }
+
+  clickProduct(id: number) {
+    console.log('product');
     console.log(id);
-    
   }
 }
